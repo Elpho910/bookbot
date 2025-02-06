@@ -7,13 +7,18 @@ def main():
     num_words = count_words(file_contents)
 
     print(f"--- Report of {book_path} ---")
-    print(f"{num_words} found in the book")
+    print(f"{num_words} words found in the book")
 
     chars = char_count(file_contents)
 
     letter_count = convert_dicts(chars)
+    letter_count.sort(key=sort_on, reverse=True)
+    # print(letter_count)
 
-    print(letter_count)
+    for item in letter_count:
+        character = item["character"]
+        num = item["num"]
+        print(f"The '{character}' character was found {num} times")
 
 
 def count_words(book):
